@@ -7,22 +7,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Navbar with Profile, Search, and Menu</title>
     <style>
-        .navbar .dropdown-toggle::after {
-            display: none;
-        }
+    .navbar .dropdown-toggle::after {
+        display: none;
+    }
 
-        .navbar .dropdown-toggle::before {
-            content: '\f007';
-            font-family: FontAwesome;
-            margin-right: 5px;
-        }
+    .navbar .dropdown-toggle::before {
+        content: '\f007';
+        font-family: FontAwesome;
+        margin-right: 5px;
+    }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Logo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -37,17 +38,20 @@
                     <a class="nav-link" href="#">Menu 3</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0 mr-3">
+            <form class="form-inline my-2 my-lg-0 mr-3" method="POST" action="search.php">
                 <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control" type="search" name="searchKeyword" placeholder="Search"
+                        aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary" type="submit">Search</button>
                     </div>
                 </div>
             </form>
+
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
 
                         <?php
 
@@ -64,10 +68,11 @@
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                         ?>
-                                <img src="../profile/edit/uploads/<?php echo $row["foto"]; ?>" alt="Profile" class="rounded-circle" width="30" height="30">
-                                <?php echo $row["name"]; ?>
+                        <img src="../profile/edit/uploads/<?php echo $row["foto"]; ?>" alt="Profile"
+                            class="rounded-circle" width="30" height="30">
+                        <?php echo $row["name"]; ?>
                     </a>
-            <?php
+                    <?php
                             }
                         } else {
                             echo "Tidak ada data yang absen hari ini";
@@ -77,13 +82,13 @@
                         mysqli_close($conn);
 
             ?>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../profile">Profile</a>
-                <a class="dropdown-item" href="../profile/edit/index.php">Settings</a>
-                <div class="dropdown-divider"></div>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="../profile">Profile</a>
+                        <a class="dropdown-item" href="../profile/edit/index.php">Settings</a>
+                        <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item" href="logout.php">Logout</a>
-            </div>
+                        <a class="dropdown-item" href="logout.php">Logout</a>
+                    </div>
                 </li>
             </ul>
         </div>
