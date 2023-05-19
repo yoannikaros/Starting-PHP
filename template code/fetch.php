@@ -16,15 +16,15 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 
 
-        <!-- Memanggil -->
-        -- <?php echo $row["panggil"]; ?>
-        -- <?php echo "Rp " . number_format($row["anggaran"], 0, ",", "."); ?>
+<!-- Memanggil -->
+-- <?php echo $row["panggil"]; ?>
+-- <?php echo "Rp " . number_format($row["anggaran"], 0, ",", "."); ?>
 
 
 <?php
     }
 } else {
-    echo "Tidak ada data yang absen hari ini";
+    echo "Tidak ada data hari ini";
 }
 
 // Tutup koneksi
